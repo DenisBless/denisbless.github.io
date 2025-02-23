@@ -30,17 +30,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;last_opened_file_path&quot;: &quot;/Users/blessing/PycharmProjects/denisbless.github.io&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ignore_missing_gitignore": "true",
+    "last_opened_file_path": "/Users/blessing/PycharmProjects/denisbless.github.io",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/photos" />
@@ -92,7 +93,9 @@
       <workItem from="1721135890382" duration="297000" />
       <workItem from="1721158915143" duration="248000" />
       <workItem from="1721721517143" duration="268000" />
-      <workItem from="1728037825891" duration="894000" />
+      <workItem from="1728037825891" duration="1063000" />
+      <workItem from="1728502906246" duration="7000" />
+      <workItem from="1740331775467" duration="2138000" />
     </task>
     <servers />
   </component>
