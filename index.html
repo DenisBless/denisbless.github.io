@@ -85,6 +85,7 @@
         <label class="mono" for="temp-slider">temp <span id="temp-readout">1.00</span></label>
         <input type="range" id="temp-slider" min="0.05" max="2.5" step="0.05" value="1">
         <button class="chip-btn mono" id="anneal-btn" title="Slowly cycle the temperature high → low (simulated annealing)">anneal: off</button>
+        <button class="chip-btn mono" id="underdamped-btn" title="Add momentum to the dynamics (underdamped / second-order Langevin) — particles gain inertia and spiral into the modes instead of descending straight in">underdamped: off</button>
         <button class="chip-btn mono" id="noise-btn" title="Scatter the particles (forward diffusion) and watch them find the modes again">re-noise ↺</button>
       </div>
     </div>

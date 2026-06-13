@@ -27,9 +27,10 @@
 
   let W = 0, H = 0, dpr = 1;
   let modes = [];          // {x, y, sigma} in CSS pixels
-  let particles = [];      // {x, y}
+  let particles = [];      // {x, y, vx, vy} — vx/vy used in underdamped mode
   let temperature = 1.0;   // user-set
   let annealing = false;
+  let underdamped = false; // false: overdamped Langevin; true: with momentum
   let annealPhase = 0;
   let running = true;
   let heatmapDirty = true;
@@ -123,7 +124,7 @@
   function scatterParticles() {
     particles = [];
     for (let i = 0; i < N_PARTICLES; i++) {
-      particles.push({ x: Math.random() * W, y: Math.random() * H });
+      particles.push({ x: Math.random() * W, y: Math.random() * H, vx: 0, vy: 0 });
     }
     trailCtx.clearRect(0, 0, W, H);
   }
@@ -170,16 +171,43 @@
   function stepParticles() {
     const T = currentTemp();
     const sig = baseSigma();
-    const h = sig * sig * 0.045;          // step size, scaled to the scene
-    const noise = Math.sqrt(2 * h * T) * 0.55; // damped for smoother visuals
 
-    for (const p of particles) {
-      score(p.x, p.y, g);
-      p.x += h * g.x + noise * randn();
-      p.y += h * g.y + noise * randn();
-      // soft walls so strays come back
-      if (p.x < -40) p.x = -40; else if (p.x > W + 40) p.x = W + 40;
-      if (p.y < -40) p.y = -40; else if (p.y > H + 40) p.y = H + 40;
+    if (underdamped) {
+      // Underdamped (second-order) Langevin with momentum:
+      //   v ← (1-friction) v + accel ∇log p(x) + sqrt(2·friction·T)·ξ
+      //   x ← x + v
+      // The score acts as a force, friction provides damping; light friction
+      // leaves enough momentum that particles spiral into the modes.
+      const accel = sig * sig * 0.006;
+      const friction = 0.02;
+      const velNoise = Math.sqrt(2 * friction * T) * sig * 0.06;
+      const vMax = sig * 0.35; // bound momentum if the temperature is cranked up
+      for (const p of particles) {
+        score(p.x, p.y, g);
+        p.vx = (1 - friction) * p.vx + accel * g.x + velNoise * randn();
+        p.vy = (1 - friction) * p.vy + accel * g.y + velNoise * randn();
+        if (p.vx > vMax) p.vx = vMax; else if (p.vx < -vMax) p.vx = -vMax;
+        if (p.vy > vMax) p.vy = vMax; else if (p.vy < -vMax) p.vy = -vMax;
+        p.x += p.vx;
+        p.y += p.vy;
+        // reflect off the soft walls so momentum doesn't pin particles there
+        if (p.x < -40) { p.x = -40; p.vx = Math.abs(p.vx); }
+        else if (p.x > W + 40) { p.x = W + 40; p.vx = -Math.abs(p.vx); }
+        if (p.y < -40) { p.y = -40; p.vy = Math.abs(p.vy); }
+        else if (p.y > H + 40) { p.y = H + 40; p.vy = -Math.abs(p.vy); }
+      }
+    } else {
+      // Overdamped (first-order) Langevin:  x ← x + h ∇log p(x) + sqrt(2hT)·ξ
+      const h = sig * sig * 0.045;          // step size, scaled to the scene
+      const noise = Math.sqrt(2 * h * T) * 0.55; // damped for smoother visuals
+      for (const p of particles) {
+        score(p.x, p.y, g);
+        p.x += h * g.x + noise * randn();
+        p.y += h * g.y + noise * randn();
+        // soft walls so strays come back
+        if (p.x < -40) p.x = -40; else if (p.x > W + 40) p.x = W + 40;
+        if (p.y < -40) p.y = -40; else if (p.y > H + 40) p.y = H + 40;
+      }
     }
     totalSteps += particles.length;
     if (annealing) annealPhase += 0.012;
@@ -341,6 +369,7 @@
   const tempSlider = document.getElementById('temp-slider');
   const tempReadout = document.getElementById('temp-readout');
   const annealBtn = document.getElementById('anneal-btn');
+  const underdampedBtn = document.getElementById('underdamped-btn');
   const noiseBtn = document.getElementById('noise-btn');
 
   if (tempSlider) {
@@ -361,6 +390,18 @@
   }
 
   if (annealBtn) annealBtn.addEventListener('click', () => toggleAnneal(!annealing));
+
+  function toggleUnderdamped(on) {
+    underdamped = on;
+    // reset momentum so switching modes doesn't carry a stale kick
+    for (const p of particles) { p.vx = 0; p.vy = 0; }
+    if (underdampedBtn) {
+      underdampedBtn.textContent = 'underdamped: ' + (on ? 'on' : 'off');
+      underdampedBtn.classList.toggle('on', on);
+    }
+  }
+  if (underdampedBtn) underdampedBtn.addEventListener('click', () => toggleUnderdamped(!underdamped));
+
   if (noiseBtn) noiseBtn.addEventListener('click', scatterParticles);
 
   // live temperature readout while annealing
