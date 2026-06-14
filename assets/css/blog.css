@@ -1,0 +1,220 @@
+/* ============================================================
+   Denis Blessing — blog
+   Builds on style.css (variables, nav, fonts, buttons, footer).
+   ============================================================ */
+
+.nav-links a.active { color: var(--text); }
+
+.blog-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 7rem 1.4rem 1rem;
+}
+
+/* ============ Index header ============ */
+
+.blog-header { margin-bottom: 2.6rem; }
+.blog-header .section-num {
+  display: inline-block;
+  font-size: 0.85rem;
+  margin-bottom: 0.4rem;
+}
+.blog-header h1 {
+  font-size: clamp(2rem, 6vw, 3rem);
+  margin: 0 0 0.7rem;
+  letter-spacing: -0.02em;
+}
+.blog-intro {
+  color: var(--text-muted);
+  max-width: 60ch;
+  margin: 0;
+}
+
+/* ============ Post list ============ */
+
+.post-list { display: flex; flex-direction: column; gap: 0.9rem; }
+
+.post-card {
+  display: block;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 1.2rem 1.4rem;
+  color: inherit;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.post-card:hover {
+  text-decoration: none;
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+  box-shadow: var(--shadow);
+}
+
+.post-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.post-card-title {
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin: 0 0 0.4rem;
+  color: var(--text);
+}
+.post-card:hover .post-card-title { color: var(--accent); }
+
+.post-card-summary {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  margin: 0 0 0.7rem;
+}
+
+.post-card-more {
+  font-size: 0.74rem;
+  color: var(--accent);
+}
+.post-card-more i { transition: transform 0.2s ease; }
+.post-card:hover .post-card-more i { transform: translateX(4px); }
+
+.post-tag {
+  font-size: 0.72rem;
+  color: var(--accent-2);
+}
+
+.post-empty { color: var(--text-muted); }
+
+/* ============ Single post ============ */
+
+.post-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 1.8rem;
+  transition: color 0.2s ease;
+}
+.post-back:hover { color: var(--accent); text-decoration: none; }
+
+.post-head { margin-bottom: 2.2rem; }
+.post-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin: 0 0 0.7rem;
+}
+.post-meta .dot { opacity: 0.6; }
+.post-title {
+  font-size: clamp(1.9rem, 5vw, 2.7rem);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+/* ---- Article body typography ---- */
+
+.post-body { font-size: 1.03rem; line-height: 1.75; }
+.post-body > *:first-child { margin-top: 0; }
+
+.post-body h2 {
+  font-family: var(--font-head);
+  font-size: 1.5rem;
+  margin: 2.4rem 0 0.9rem;
+  letter-spacing: -0.01em;
+}
+.post-body h3 {
+  font-family: var(--font-head);
+  font-size: 1.2rem;
+  margin: 1.9rem 0 0.7rem;
+}
+.post-body p { margin: 0 0 1.1rem; }
+
+.post-body a {
+  color: var(--accent);
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+}
+.post-body a:hover { text-decoration: none; border-bottom-color: var(--accent); }
+
+.post-body ul, .post-body ol { margin: 0 0 1.1rem; padding-left: 1.4rem; }
+.post-body li { margin: 0.3rem 0; }
+.post-body li::marker { color: var(--accent); }
+
+.post-body blockquote {
+  margin: 1.3rem 0;
+  padding: 0.4rem 1.1rem;
+  border-left: 3px solid var(--accent);
+  background: var(--surface-2);
+  border-radius: 0 9px 9px 0;
+  color: var(--text-muted);
+}
+.post-body blockquote p:last-child { margin-bottom: 0; }
+
+.post-body img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5rem auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.post-body hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2.2rem 0;
+}
+
+/* inline code */
+.post-body :not(pre) > code {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.1em 0.4em;
+}
+
+/* code blocks (highlight.js paints the inside) */
+.post-body pre {
+  margin: 1.4rem 0;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow: auto;
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+.post-body pre code {
+  display: block;
+  font-family: var(--font-mono);
+  padding: 1rem 1.2rem;
+  background: transparent;
+}
+
+/* tables */
+.post-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.4rem 0;
+  font-size: 0.92rem;
+}
+.post-body th, .post-body td {
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.8rem;
+  text-align: left;
+}
+.post-body th { background: var(--surface-2); font-weight: 600; }
+
+/* math */
+.post-body .katex-display {
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.2rem 0;
+}

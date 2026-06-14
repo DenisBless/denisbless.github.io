@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Blog — Denis Blessing</title>
+  <meta name="description" content="A post by Denis Blessing.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css" crossorigin="anonymous">
+
+  <!-- Math (KaTeX) + code highlighting (highlight.js) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/atom-one-dark.min.css" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/blog.css">
+
+  <script>
+    // Apply saved theme before first paint to avoid a flash.
+    (function () {
+      var t = new URLSearchParams(location.search).get('theme') || localStorage.getItem('theme');
+      if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+</head>
+
+<body>
+
+  <!-- ============ Nav ============ -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a class="nav-brand" href="../">DB<span class="nav-brand-dot">.</span></a>
+      <div class="nav-links">
+        <a href="../#about">About</a>
+        <a href="../#publications">Publications</a>
+        <a href="index.html" class="active">Blog</a>
+      </div>
+      <div class="nav-icons">
+        <a href="mailto:denis.blessing@kit.edu" title="Email" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://scholar.google.com/citations?user=_eEXIEcAAAAJ" target="_blank" rel="noopener" title="Google Scholar" aria-label="Google Scholar"><i class="ai ai-google-scholar"></i></a>
+        <a href="https://github.com/DenisBless" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/denis-b-8983a42a0/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://x.com/DenBless94" target="_blank" rel="noopener" title="X" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+        <button class="theme-toggle" id="theme-toggle" title="Toggle theme" aria-label="Toggle color theme">
+          <i class="fas fa-moon"></i><i class="fas fa-sun"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="blog-wrap">
+    <article class="post">
+      <a class="post-back mono" href="index.html"><i class="fas fa-arrow-left"></i> all posts</a>
+      <header class="post-head">
+        <p class="post-meta mono" id="post-meta"></p>
+        <h1 class="post-title" id="post-title">Loading…</h1>
+      </header>
+      <div class="post-body" id="post-body"></div>
+    </article>
+  </main>
+
+  <!-- ============ Footer ============ -->
+  <footer class="footer">
+    <p>© <span id="year"></span> Denis Blessing — hand-built with plain HTML, CSS and a Langevin sampler.</p>
+  </footer>
+
+  <!-- libraries: Markdown, math auto-render, code highlighting -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.0/marked.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js" crossorigin="anonymous"></script>
+
+  <script src="posts.js"></script>
+  <script src="blog.js"></script>
+</body>
+
+</html>
