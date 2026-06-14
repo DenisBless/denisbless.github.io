@@ -218,3 +218,71 @@
   overflow-y: hidden;
   padding: 0.2rem 0;
 }
+
+/* ============ Interactive widgets ============ */
+
+.langevin-demo, .mala-demo { margin: 2rem 0; }
+
+.ld-canvas {
+  display: block;
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.ld-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-top: 0.8rem;
+}
+.ld-label { font-size: 0.78rem; color: var(--text-muted); white-space: nowrap; }
+.ld-label b { color: var(--accent); }
+.ld-slider { flex: 1; accent-color: var(--accent); height: 4px; }
+
+.ld-caption {
+  font-size: 0.74rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+  margin: 0.6rem 0 0;
+}
+.ld-caption b { color: var(--text); }
+
+/* stacked controls (MALA widget) */
+.ld-controls-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 0.8rem;
+}
+.ld-row { display: flex; align-items: center; gap: 0.9rem; }
+.ld-row .ld-label { min-width: 9.5rem; }
+
+.ld-seg {
+  display: inline-flex;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+  flex: none;
+}
+.ld-seg button {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  padding: 0.32rem 0.9rem;
+  background: var(--surface-2);
+  color: var(--text-muted);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.18s, color 0.18s;
+}
+.ld-seg button.active { background: var(--accent); color: #0b0e1a; }
+html[data-theme="light"] .ld-seg button.active { color: #fff; }
+
+.ld-acc { font-size: 0.76rem; color: var(--text-muted); white-space: nowrap; }
+.ld-acc b { color: var(--accent); }
+
+@media (max-width: 480px) {
+  .ld-row { flex-wrap: wrap; gap: 0.5rem; }
+  .ld-row .ld-label { min-width: 0; }
+}
