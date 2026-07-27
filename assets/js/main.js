@@ -29,6 +29,27 @@
 
   const PUBS = [
     {
+      title: 'ATLAS: A Foundation Neural Sampler for Amorphous Materials',
+      authors: 'Mouyang Cheng*, Denis Blessing*, Botao Yu, Gerhard Neumann, Mingda Li, Carles Domingo-Enrich, Yuanqi Du',
+      venue: 'Preprint', venueClass: 'preprint', venueFull: 'arXiv preprint', year: 2026,
+      arxiv: '2607.19198', tags: ['sampling', 'first'],
+      abstract: 'TL;DR: A foundation neural sampler that learns a diffusion process to generate Boltzmann-distributed amorphous structures directly from an energy function, generalizing across system size, temperature and composition.',
+    },
+    {
+      title: 'Scalable Maximum Entropy Reinforcement Learning for Diffusion Policies via Adjoint Matching',
+      authors: 'Serge Thilges, Onur Celik, Denis Blessing, Emiliyan Gospodinov, Gerhard Neumann',
+      venue: 'Preprint', venueClass: 'preprint', venueFull: 'arXiv preprint', year: 2026,
+      arxiv: '2606.22630', tags: ['robot', 'sampling'],
+      abstract: 'TL;DR: Adjoint matching enables simulation-free training of diffusion policies for online maximum entropy RL, avoiding likelihood estimation and backpropagation through the diffusion process.',
+    },
+    {
+      title: 'Trust-Region Diffusion Policies for Massively Parallel On-Policy RL',
+      authors: 'Huy Le, Onur Celik, Denis Blessing, Tai Hoang, Claas A Voelcker, Axel Brunnbauer, Felix Richter, Michael Volpp, Gerhard Neumann',
+      venue: 'ICML', venueClass: 'icml', venueFull: 'International Conference on Machine Learning (ICML)', year: 2026,
+      arxiv: '2606.15260', tags: ['robot'],
+      abstract: 'TL;DR: TruDi trains diffusion policies in the massively parallel on-policy regime by enforcing a KL trust region over the entire diffusion trajectory, evaluated on 73 tasks across 4 benchmarks.',
+    },
+    {
       title: 'Bridge Matching Sampler: Scalable Sampling via Generalized Fixed-Point Diffusion Matching',
       authors: 'Denis Blessing, Lorenz Richter, Julius Berner, Egor Malitskiy, Gerhard Neumann',
       venue: 'ICML', venueClass: 'icml', venueFull: 'International Conference on Machine Learning (ICML)', year: 2026,
