@@ -29,6 +29,13 @@
 
   const PUBS = [
     {
+      title: 'JANUS: A Multi-modal Foundation Neural Sampler for Disordered Materials',
+      authors: 'Denis Blessing*, Mouyang Cheng*, Maximilian Schebek, Jutta Rogal, Mingda Li, Carles Domingo-Enrich, Yuanqi Du',
+      venue: 'Preprint', venueClass: 'preprint', venueFull: 'arXiv preprint', year: 2026,
+      arxiv: '2608.19116', tags: ['sampling', 'first'],
+      abstract: 'TL;DR: A multi-modal neural sampler that couples continuous and masked discrete diffusion in an equivariant graph network, trained purely from energy evaluations, to sample chemically disordered materials across composition and volume.',
+    },
+    {
       title: 'ATLAS: A Foundation Neural Sampler for Amorphous Materials',
       authors: 'Mouyang Cheng*, Denis Blessing*, Botao Yu, Gerhard Neumann, Mingda Li, Carles Domingo-Enrich, Yuanqi Du',
       venue: 'Preprint', venueClass: 'preprint', venueFull: 'arXiv preprint', year: 2026,
